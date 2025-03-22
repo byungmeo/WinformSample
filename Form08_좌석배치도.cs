@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form좌석배치도 : Form
+    public partial class Form08_좌석배치도 : Form
     {
         int 현재호차번호 = 1;
 
@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
         int 로그인회원번호;
         int 선택스케쥴번호;
 
-        public Form좌석배치도(int uno, int sno)
+        public Form08_좌석배치도(int uno, int sno)
         {
             InitializeComponent();
             로그인회원번호 = uno;

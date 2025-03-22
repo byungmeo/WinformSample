@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class FormReservation
+    partial class Form04_예매
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReservation));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form04_예매));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button_도착지 = new System.Windows.Forms.Button();
             this.button_출발지 = new System.Windows.Forms.Button();

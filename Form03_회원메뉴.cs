@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormUserMenu : Form
+    public partial class Form03_회원메뉴 : Form
     {
         User loginUser = null;
         int 나이;
 
-        public FormUserMenu(User user)
+        public Form03_회원메뉴(User user)
         {
             InitializeComponent();
             loginUser = user;
@@ -44,7 +44,7 @@ namespace WindowsFormsApp1
         {
             // 열차예매 폼으로 이동하고 싶다.
             this.Visible = false;
-            FormReservation formReservation = new FormReservation(loginUser, 나이);
+            Form04_예매 formReservation = new Form04_예매(loginUser, 나이);
             formReservation.ShowDialog(this);
             this.Visible = true;
         }
@@ -53,7 +53,7 @@ namespace WindowsFormsApp1
         {
             // 마이페이지 폼으로 이동하고 싶다.
             this.Visible = false;
-            FormMyPage formMyPage = new FormMyPage(loginUser);
+            Form09_마이페이지 formMyPage = new Form09_마이페이지(loginUser);
             formMyPage.ShowDialog(this);
             this.Visible = true;
         }

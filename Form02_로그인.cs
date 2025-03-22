@@ -3,13 +3,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormLogin : Form
+    public partial class Form02_로그인 : Form
     {
         // 로그인에 성공하였다면, 유저 정보를 저장해두고 싶다.
         // 저장한 로그인 정보는 메인 폼에서 사용한다.
         public User user = null;
 
-        public FormLogin()
+        public Form02_로그인()
         {
             InitializeComponent();
         }

@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormCalendar : Form
+    public partial class Form06_달력 : Form
     {
         public Schedule 선택스케줄;
         public DateTime 선택날짜;
@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
         int 도착지번호;
         int 금액;
 
-        public FormCalendar(string 출발지명, int 출발지번호, string 도착지명, int 도착지번호, int 금액)
+        public Form06_달력(string 출발지명, int 출발지번호, string 도착지명, int 도착지번호, int 금액)
         {
             InitializeComponent();
             this.출발지명 = 출발지명;
@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
             선택날짜 = e.Start;
 
             this.Visible = false;
-            Form운행리스트 form운행리스트 = new Form운행리스트(선택날짜, 출발지명, 출발지번호, 도착지명, 도착지번호, 금액);
+            Form07_운행리스트 form운행리스트 = new Form07_운행리스트(선택날짜, 출발지명, 출발지번호, 도착지명, 도착지번호, 금액);
             DialogResult dr = form운행리스트.ShowDialog(this);
             if(dr == DialogResult.OK)
             {

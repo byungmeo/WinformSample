@@ -3,14 +3,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormMain : Form
+    public partial class Form01_메인 : Form
     {
         // 현재 로그인이 되어 있는 상태인지 저장하고 싶다.
         bool isLoogedIn = false;
         // 현재 로그인이 되어있다면 회원 정보를 저장하고 싶다.
         User user = null;
 
-        public FormMain()
+        public Form01_메인()
         {
             InitializeComponent();
 
@@ -25,15 +25,17 @@ namespace WindowsFormsApp1
             {
                 // 로그인이 되어있지 않다면 로그인 폼으로 이동하고 싶다.
                 this.Visible = false;
-                FormLogin formLogin = new FormLogin();
+                Form02_로그인 formLogin = new Form02_로그인();
                 DialogResult result = formLogin.ShowDialog(this);
                 if(result == DialogResult.OK)
                 {
+                    button_left.Text = "회원 메뉴";
+                    button_center.Text = "로그아웃";
                     // 만약, 로그인에 성공했다면, 바로 회원메뉴 폼으로 이동하고 싶다.
                     user = formLogin.user;
                     isLoogedIn = true;
                     this.Visible = false;
-                    FormUserMenu formUserMenu = new FormUserMenu(user);
+                    Form03_회원메뉴 formUserMenu = new Form03_회원메뉴(user);
                     formUserMenu.ShowDialog(this);
                     this.Visible = true;
                 }
@@ -43,7 +45,7 @@ namespace WindowsFormsApp1
             {
                 // 로그인이 되어있다면 회원메뉴 폼으로 이동하고 싶다.
                 this.Visible = false;
-                FormUserMenu formUserMenu = new FormUserMenu(user);
+                Form03_회원메뉴 formUserMenu = new Form03_회원메뉴(user);
                 formUserMenu.ShowDialog(this);
                 this.Visible = true;
             }
@@ -55,7 +57,7 @@ namespace WindowsFormsApp1
             {
                 // 로그인이 되어있지 않다면 관리자 로그인 폼으로 이동하고 싶다.
                 this.Visible = false;
-                FormLoginManager formLoginManager = new FormLoginManager();
+                Form10_관리자로그인 formLoginManager = new Form10_관리자로그인();
                 DialogResult result = formLoginManager.ShowDialog(this);
                 this.Visible = true;
             }

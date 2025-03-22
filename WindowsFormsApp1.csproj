@@ -47,94 +47,124 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseHelper.cs" />
-    <Compile Include="FormCalendar.cs">
+    <Compile Include="Form06_달력.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCalendar.Designer.cs">
-      <DependentUpon>FormCalendar.cs</DependentUpon>
+    <Compile Include="Form06_달력.Designer.cs">
+      <DependentUpon>Form06_달력.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin.cs">
+    <Compile Include="Form02_로그인.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLogin.Designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <Compile Include="Form02_로그인.Designer.cs">
+      <DependentUpon>Form02_로그인.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLoginManager.cs">
+    <Compile Include="Form10_관리자로그인.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLoginManager.Designer.cs">
-      <DependentUpon>FormLoginManager.cs</DependentUpon>
+    <Compile Include="Form10_관리자로그인.Designer.cs">
+      <DependentUpon>Form10_관리자로그인.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMain.cs">
+    <Compile Include="Form01_메인.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="Form01_메인.Designer.cs">
+      <DependentUpon>Form01_메인.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMyPage.cs">
+    <Compile Include="Form09_마이페이지.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMyPage.Designer.cs">
-      <DependentUpon>FormMyPage.cs</DependentUpon>
+    <Compile Include="Form09_마이페이지.Designer.cs">
+      <DependentUpon>Form09_마이페이지.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormReservation.cs">
+    <Compile Include="Form04_예매.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormReservation.Designer.cs">
-      <DependentUpon>FormReservation.cs</DependentUpon>
+    <Compile Include="Form04_예매.Designer.cs">
+      <DependentUpon>Form04_예매.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSelect.cs">
+    <Compile Include="Form05_지역선택.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormSelect.Designer.cs">
-      <DependentUpon>FormSelect.cs</DependentUpon>
+    <Compile Include="Form05_지역선택.Designer.cs">
+      <DependentUpon>Form05_지역선택.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormUserMenu.cs">
+    <Compile Include="Form03_회원메뉴.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormUserMenu.Designer.cs">
-      <DependentUpon>FormUserMenu.cs</DependentUpon>
+    <Compile Include="Form03_회원메뉴.Designer.cs">
+      <DependentUpon>Form03_회원메뉴.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form운행리스트.cs">
+    <Compile Include="Form11_관리자.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form운행리스트.Designer.cs">
-      <DependentUpon>Form운행리스트.cs</DependentUpon>
+    <Compile Include="Form11_관리자.Designer.cs">
+      <DependentUpon>Form11_관리자.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form좌석배치도.cs">
+    <Compile Include="Form07_운행리스트.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form좌석배치도.Designer.cs">
-      <DependentUpon>Form좌석배치도.cs</DependentUpon>
+    <Compile Include="Form07_운행리스트.Designer.cs">
+      <DependentUpon>Form07_운행리스트.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form08_좌석배치도.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form08_좌석배치도.Designer.cs">
+      <DependentUpon>Form08_좌석배치도.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form12_회원정보.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form12_회원정보.Designer.cs">
+      <DependentUpon>Form12_회원정보.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form13_분석.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form13_분석.Designer.cs">
+      <DependentUpon>Form13_분석.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormCalendar.resx">
-      <DependentUpon>FormCalendar.cs</DependentUpon>
+    <EmbeddedResource Include="Form06_달력.resx">
+      <DependentUpon>Form06_달력.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <EmbeddedResource Include="Form02_로그인.resx">
+      <DependentUpon>Form02_로그인.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <EmbeddedResource Include="Form10_관리자로그인.resx">
+      <DependentUpon>Form10_관리자로그인.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMyPage.resx">
-      <DependentUpon>FormMyPage.cs</DependentUpon>
+    <EmbeddedResource Include="Form01_메인.resx">
+      <DependentUpon>Form01_메인.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormReservation.resx">
-      <DependentUpon>FormReservation.cs</DependentUpon>
+    <EmbeddedResource Include="Form09_마이페이지.resx">
+      <DependentUpon>Form09_마이페이지.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormSelect.resx">
-      <DependentUpon>FormSelect.cs</DependentUpon>
+    <EmbeddedResource Include="Form04_예매.resx">
+      <DependentUpon>Form04_예매.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormUserMenu.resx">
-      <DependentUpon>FormUserMenu.cs</DependentUpon>
+    <EmbeddedResource Include="Form05_지역선택.resx">
+      <DependentUpon>Form05_지역선택.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form운행리스트.resx">
-      <DependentUpon>Form운행리스트.cs</DependentUpon>
+    <EmbeddedResource Include="Form03_회원메뉴.resx">
+      <DependentUpon>Form03_회원메뉴.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form좌석배치도.resx">
-      <DependentUpon>Form좌석배치도.cs</DependentUpon>
+    <EmbeddedResource Include="Form11_관리자.resx">
+      <DependentUpon>Form11_관리자.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form07_운행리스트.resx">
+      <DependentUpon>Form07_운행리스트.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form08_좌석배치도.resx">
+      <DependentUpon>Form08_좌석배치도.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form12_회원정보.resx">
+      <DependentUpon>Form12_회원정보.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form13_분석.resx">
+      <DependentUpon>Form13_분석.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

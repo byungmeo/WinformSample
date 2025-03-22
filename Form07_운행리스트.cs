@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form운행리스트 : Form
+    public partial class Form07_운행리스트 : Form
     {
         public TimeSpan 선택출발시간;
         public TimeSpan 선택도착시간;
 
-        public Form운행리스트(DateTime 선택날짜, string 출발지명, int 출발지번호, string 도착지명, int 도착지번호, int 금액)
+        public Form07_운행리스트(DateTime 선택날짜, string 출발지명, int 출발지번호, string 도착지명, int 도착지번호, int 금액)
         {
             InitializeComponent();
 

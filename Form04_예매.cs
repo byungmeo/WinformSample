@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormReservation : Form
+    public partial class Form04_예매 : Form
     {
         // 폼이 시작될 때 어떤 회원이 예약을 하는지 알고 싶다.
         User user = null;
@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
         public Schedule 선택스케줄 = null;
         public TimeSpan 도착시간;
         public Reservation 선택좌석정보 = null;
-        public FormReservation(User user, int 나이)
+        public Form04_예매(User user, int 나이)
         {
             InitializeComponent();
             this.user = user;
@@ -30,7 +30,7 @@ namespace WindowsFormsApp1
         private void button_출발지_Click(object sender, System.EventArgs e)
         {
             this.Visible = false;
-            FormSelect formSelect = new FormSelect(true, "");
+            Form05_지역선택 formSelect = new Form05_지역선택(true, "");
             DialogResult dr = formSelect.ShowDialog(this);
             if(dr == DialogResult.OK)
             {
@@ -67,7 +67,7 @@ namespace WindowsFormsApp1
             }
 
             this.Visible = false;
-            FormSelect formSelect = new FormSelect(false, 출발지명);
+            Form05_지역선택 formSelect = new Form05_지역선택(false, 출발지명);
             DialogResult dr = formSelect.ShowDialog(this);
             if(dr == DialogResult.OK)
             {
@@ -128,7 +128,7 @@ namespace WindowsFormsApp1
             }
 
             this.Visible = false;
-            FormCalendar formCalendar = new FormCalendar(출발지명, 출발지번호, 도착지명, 도착지번호, 금액);
+            Form06_달력 formCalendar = new Form06_달력(출발지명, 출발지번호, 도착지명, 도착지번호, 금액);
             DialogResult dr = formCalendar.ShowDialog(this);
             if(dr == DialogResult.OK)
             {
@@ -163,7 +163,7 @@ namespace WindowsFormsApp1
             }
 
             this.Visible = false;
-            Form좌석배치도 formSeat = new Form좌석배치도(user.uno, 선택스케줄.sno);
+            Form08_좌석배치도 formSeat = new Form08_좌석배치도(user.uno, 선택스케줄.sno);
             DialogResult dr = formSeat.ShowDialog(this);
             if(dr == DialogResult.OK)
             {

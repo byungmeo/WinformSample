@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormSelect : Form
+    public partial class Form05_지역선택 : Form
     {
         bool 출발지선택;
         public string 선택지역명;
         public int 선택지역번호;
-        public FormSelect(bool 출발지선택, string 출발지)
+        public Form05_지역선택(bool 출발지선택, string 출발지)
         {
             InitializeComponent();
             this.출발지선택 = 출발지선택;

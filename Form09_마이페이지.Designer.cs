@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class FormMyPage
+    partial class Form09_마이페이지
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMyPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form09_마이페이지));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label_합계 = new System.Windows.Forms.Label();
             this.label_예약건수 = new System.Windows.Forms.Label();
@@ -600,7 +600,7 @@
             this.label35.TabIndex = 8;
             this.label35.Text = "A04";
             // 
-            // FormMyPage
+            // Form09_마이페이지
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -625,7 +625,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormMyPage";
+            this.Name = "Form09_마이페이지";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "마이페이지";
             this.Load += new System.EventHandler(this.FormMyPage_Load);
             this.panel1.ResumeLayout(false);

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class FormLoginManager : Form
+    public partial class Form13_분석 : Form
     {
-        public FormLoginManager()
+        public Form13_분석()
         {
             InitializeComponent();
         }
