@@ -5,8 +5,8 @@ namespace WindowsFormsApp1
 {
     public partial class FormCalendar : Form
     {
+        public Schedule 선택스케줄;
         public DateTime 선택날짜;
-        public TimeSpan 출발시간;
         public TimeSpan 도착시간;
 
         // 운행리스트폼에서 사용할 수 있도록 저장
@@ -47,7 +47,7 @@ namespace WindowsFormsApp1
             if(dr == DialogResult.OK)
             {
                 DialogResult = DialogResult.OK;
-                출발시간 = form운행리스트.선택출발시간;
+                선택스케줄 = DatabaseHelper.GetScheduleByDateAndTime(선택날짜, 출발지번호, 도착지번호, form운행리스트.선택출발시간);
                 도착시간 = form운행리스트.선택도착시간;
             }
             this.Visible = true;

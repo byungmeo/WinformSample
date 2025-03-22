@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
                 // (sender, e) : 원래 Button의 Click 기능에서 필요한 인자 2개 (object sender, EventArgs e)를 줄여서 사용
                 button.Click += (sender, e) =>
                 {
-                    선택지역명 = button.Text;
+                    선택지역명 = location.lname;
                     선택지역번호 = location.lno;
                     DialogResult = DialogResult.OK;
                     this.Close();

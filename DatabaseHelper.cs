@@ -35,6 +35,15 @@ namespace WindowsFormsApp1
         public TimeSpan time;
     }
 
+    public class Reservation
+    {
+        public int rno;
+        public int uno;
+        public int sno;
+        public int carno;
+        public string seat;
+    }
+
     /// <summary>
     /// 데이터베이스쪽 일을 도와주는 동료, 클래스
     /// </summary>
@@ -113,40 +122,6 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("특정회원정보출력 실패 ㅠㅠ");
             }
-
-            #region 정답코드
-            return;
-            // SELECT   : 무슨 필드? (*은 모든 필드를 의미한다)
-            // FROM     : 어디 테이블?
-            // WHERE    : 조건
-
-            // id가 'user01'이면서, pw가 'user01!'인 회원 정보를 알고 싶다.
-            string sql1 = "SELECT * FROM [user] WHERE id='user012' AND pw='user01!'";
-
-            try
-            {
-                using(SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using(SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        using(SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while(reader.Read())
-                            {
-                                // Console.WriteLine(reader["id"] + " " + reader["pw"] + " " + reader["name"]);
-                                Console.WriteLine($"{reader["id"]} / {reader["pw"]} / {reader["name"]}");
-                            }
-                        }
-                    }
-                }
-                Console.WriteLine("특정회원정보출력 성공");
-            } catch(System.Exception)
-            {
-                Console.WriteLine("특정회원정보출력 중 오류 발생");
-            }
-            #endregion
         }
 
         public static bool 로그인성공확인(string id, string pw)
@@ -177,45 +152,7 @@ namespace WindowsFormsApp1
             }
 
             // 오류가 발생하거나 그런 회원 없으면 여기로 온다
-            return false;
-
-            #region 정답코드
-            return false;
-            // SELECT   : 무슨 필드? (*은 모든 필드를 의미한다)
-            // FROM     : 어디 테이블?
-            // WHERE    : 조건
-
-            // id가 'user01'이면서, pw가 'user01!'인 회원 정보를 알고 싶다.
-            string sql1 = $"SELECT * FROM [user] WHERE id='{id}' AND pw='{pw}'";
-
-            try
-            {
-                using(SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using(SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        using(SqlDataReader reader = command.ExecuteReader())
-                        {
-                            // id와 pw가 똑같은 회원이 1명이라도 있는가?
-                            if(reader.HasRows)
-                            {
-                                return true;
-                            } else
-                            {
-                                return false;
-                            }
-                        }
-                    }
-                }
-            } catch(System.Exception)
-            {
-                Console.WriteLine("로그인성공확인 중 오류 발생");
-            }
-
-            return false;
-            #endregion          
+            return false;     
         }
 
         public static User GetUserByIdAndPw(string id, string pw)
@@ -416,6 +353,92 @@ namespace WindowsFormsApp1
             }
 
             return scheduleList;
+        }
+
+        public static Schedule GetScheduleByDateAndTime(DateTime date, int starting, int destination, TimeSpan startTime)
+        {
+            List<Schedule> scheduleList = new List<Schedule>();
+
+            string sql = $"SELECT * " +
+                $"FROM [schedule] " +
+                $"WHERE date='{date.ToShortDateString()}' " +
+                $"AND starting={starting} " +
+                $"AND destination={destination} " +
+                $"AND time='{startTime}'";
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            while(reader.Read())
+                            {
+                                Schedule schedule = new Schedule();
+
+                                schedule.sno = reader.GetInt32(0);
+                                schedule.date = reader.GetDateTime(1);
+                                schedule.starting = reader.GetInt32(2);
+                                schedule.destination = reader.GetInt32(3);
+                                schedule.time = reader.GetTimeSpan(4);
+
+                                scheduleList.Add(schedule);
+                            }
+                        }
+                    }
+                }
+            } catch(System.Exception)
+            {
+                MessageBox.Show("실패");
+            }
+
+            // 어차피 무조건 1개만 있는 것이 보장되어 0번째 스케줄 반환
+            return scheduleList[0];
+        }
+
+        public static List<Reservation> GetReservationByScheduleAndCarNumber(int sno, int carno)
+        {
+            List<Reservation> reservationList = new List<Reservation>();
+
+            string sql = $"SELECT * " +
+                $"FROM [reservation] " +
+                $"WHERE sno={sno}" +
+                $"AND carno={carno}";
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            while(reader.Read())
+                            {
+                                Reservation reservation = new Reservation();
+                                reservation.rno = reader.GetInt32(0);
+                                reservation.uno = reader.GetInt32(1);
+                                reservation.sno = reader.GetInt32(2);
+                                reservation.carno = reader.GetInt32(3);
+                                reservation.seat = reader.GetString(4);
+
+                                reservationList.Add(reservation);
+                            }
+                        }
+                    }
+                }
+            } catch(System.Exception)
+            {
+                MessageBox.Show("실패");
+            }
+
+            return reservationList;
         }
     }
 }

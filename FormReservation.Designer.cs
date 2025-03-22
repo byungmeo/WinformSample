@@ -53,7 +53,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.textBox_호차 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox_좌석배치도 = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox_할인 = new System.Windows.Forms.TextBox();
@@ -62,12 +62,12 @@
             this.label18 = new System.Windows.Forms.Label();
             this.textBox_금액 = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_예매 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_달력)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_좌석배치도)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -283,7 +283,7 @@
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.textBox_호차);
             this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.pictureBox2);
+            this.panel3.Controls.Add(this.pictureBox_좌석배치도);
             this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Location = new System.Drawing.Point(15, 239);
@@ -333,15 +333,16 @@
             this.label14.TabIndex = 3;
             this.label14.Text = "호차";
             // 
-            // pictureBox2
+            // pictureBox_좌석배치도
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(196, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(35, 35);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.pictureBox_좌석배치도.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_좌석배치도.Image")));
+            this.pictureBox_좌석배치도.Location = new System.Drawing.Point(196, 9);
+            this.pictureBox_좌석배치도.Name = "pictureBox_좌석배치도";
+            this.pictureBox_좌석배치도.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox_좌석배치도.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_좌석배치도.TabIndex = 2;
+            this.pictureBox_좌석배치도.TabStop = false;
+            this.pictureBox_좌석배치도.Click += new System.EventHandler(this.pictureBox_좌석배치도_Click);
             // 
             // label15
             // 
@@ -425,25 +426,26 @@
             this.label19.TabIndex = 21;
             this.label19.Text = "금액";
             // 
-            // button3
+            // button_예매
             // 
-            this.button3.BackColor = System.Drawing.Color.Blue;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(150, 407);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(188, 29);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "예매";
-            this.button3.UseVisualStyleBackColor = false;
+            this.button_예매.BackColor = System.Drawing.Color.Blue;
+            this.button_예매.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_예매.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_예매.ForeColor = System.Drawing.Color.White;
+            this.button_예매.Location = new System.Drawing.Point(150, 407);
+            this.button_예매.Name = "button_예매";
+            this.button_예매.Size = new System.Drawing.Size(188, 29);
+            this.button_예매.TabIndex = 24;
+            this.button_예매.Text = "예매";
+            this.button_예매.UseVisualStyleBackColor = false;
+            this.button_예매.Click += new System.EventHandler(this.button_예매_Click);
             // 
             // FormReservation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 448);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button_예매);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.textBox_금액);
             this.Controls.Add(this.label19);
@@ -468,7 +470,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_달력)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_좌석배치도)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -500,7 +502,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox_호차;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox_좌석배치도;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox_할인;
@@ -509,6 +511,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox_금액;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button_예매;
     }
 }
