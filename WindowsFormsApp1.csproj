@@ -118,6 +118,9 @@
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMyPage.resx">
+      <DependentUpon>FormMyPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormReservation.resx">
       <DependentUpon>FormReservation.cs</DependentUpon>
     </EmbeddedResource>
