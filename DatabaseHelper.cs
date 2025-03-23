@@ -49,111 +49,8 @@ namespace WindowsFormsApp1
     /// </summary>
     internal static class DatabaseHelper
     {
+        // database, Uid, Pwd는 환경에 맞춰 설정
         static string connectionString = "server=localhost; database=Datarail; Uid=sa; Pwd=Rlaqudeo35584!#";
-
-        public static void 연결확인()
-        {
-            try
-            {
-                using(SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open(); // 연결해라
-                }
-
-                MessageBox.Show("연결 성공");
-            } catch(System.Exception)
-            {
-                MessageBox.Show("연결 실패 ㅠㅠ");
-            }
-        }
-
-        public static void 회원정보출력()
-        {
-            string sql = "SELECT * FROM [user]";
-
-            try
-            {
-                using(SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    // 택배기사(SqlCommand) 고용
-                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
-                    {
-                        // 상하차(물건 실어나르는) 직원들을 고용
-                        using(SqlDataReader reader = sqlCommand.ExecuteReader())
-                        {
-                            while(reader.Read())
-                            {
-                                // 지금 가리키고 있는 행(Row)의 필드(Field)들을 출력해달라.
-                                Console.WriteLine($"{reader["id"]} / {reader["pw"]} / {reader["name"]}");
-                            }
-                        }
-                    }
-                }
-            } catch(System.Exception)
-            {
-                MessageBox.Show("회원정보출력 실패 ㅠㅠ");
-            }
-        }
-
-        public static void 특정회원정보출력()
-        {
-            string sql = "SELECT * FROM [user] WHERE id='user01' AND pw='user01!'";
-
-            try
-            {
-                using(SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
-                    {
-                        using(SqlDataReader reader = sqlCommand.ExecuteReader())
-                        {
-                            while(reader.Read())
-                            {
-                                Console.WriteLine($"{reader["id"]} / {reader["pw"]} / {reader["name"]}");
-                            }
-                        }
-                    }
-                }
-            } catch(System.Exception)
-            {
-                MessageBox.Show("특정회원정보출력 실패 ㅠㅠ");
-            }
-        }
-
-        public static bool 로그인성공확인(string id, string pw)
-        {
-            string sql = $"SELECT * FROM [user] WHERE id='{id}' AND pw='{pw}'";
-
-            try
-            {
-                using(SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
-                    {
-                        using(SqlDataReader reader = sqlCommand.ExecuteReader())
-                        {
-                            // id랑 pw 가진 회원이 있냐 == 행이 1개라도 있냐
-                            if(reader.HasRows)
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            } catch(System.Exception)
-            {
-                MessageBox.Show("특정회원정보출력 실패 ㅠㅠ");
-            }
-
-            // 오류가 발생하거나 그런 회원 없으면 여기로 온다
-            return false;     
-        }
 
         public static User GetUserByIdAndPw(string id, string pw)
         {
@@ -439,6 +336,90 @@ namespace WindowsFormsApp1
             }
 
             return reservationList;
+        }
+
+        public static List<User> GetUserAll()
+        {
+            List<User> 유저리스트 = new List<User>();
+
+            string sql = "SELECT * FROM [user]";
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            while(reader.Read())
+                            {
+                                User user = new User();
+                                user.uno = reader.GetInt32(0);
+                                user.id = reader.GetString(1);
+                                user.pw = reader.GetString(2);
+                                user.name = reader.GetString(3);
+                                user.birth = reader.GetDateTime(4);
+                                user.phone = reader.GetString(5);
+                                user.email = reader.GetString(6);
+                                유저리스트.Add(user);
+                            }
+                        }
+                    }
+                }
+            } catch(System.Exception)
+            {
+                MessageBox.Show("실패");
+            }
+
+            return 유저리스트;
+        }
+
+        internal static void DeleteReservationByUno(int uno)
+        {
+            string sql = $"DELETE FROM [reservation] WHERE uno={uno}";
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        // 1번 강나희 회원을 삭제하면 user테이블에서는 1, reservation테이블에서는 10개가 삭제 되어야 함.
+                        int result = sqlCommand.ExecuteNonQuery();
+                        Console.WriteLine($"Reservation 테이블에서 {result} 개의 행이 삭제됨.");
+                    }
+                }
+            } catch(System.Exception)
+            {
+                MessageBox.Show("실패");
+            }
+        }
+
+        internal static void DeleteUserByUno(int uno)
+        {
+            string sql = $"DELETE FROM [user] WHERE uno={uno}";
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        int result = sqlCommand.ExecuteNonQuery();
+                        Console.WriteLine($"User 테이블에서 {result} 개의 행이 삭제됨.");
+                    }
+                }
+            } catch(System.Exception)
+            {
+                MessageBox.Show("실패");
+            }
         }
     }
 }
