@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace WindowsFormsApp1
 {
@@ -496,6 +497,44 @@ namespace WindowsFormsApp1
             }
 
             return scheduleList;
+        }
+
+        public static List<Reservation> GetReservationByUno(int uno)
+        {
+            List<Reservation> reservationList = new List<Reservation>();
+
+            string sql = $"SELECT * FROM [reservation] WHERE uno={uno}";
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            while(reader.Read())
+                            {
+                                Reservation reservation = new Reservation();
+                                reservation.rno = reader.GetInt32(0);
+                                reservation.uno = reader.GetInt32(1);
+                                reservation.sno = reader.GetInt32(2);
+                                reservation.carno = reader.GetInt32(3);
+                                reservation.seat = reader.GetString(4);
+
+                                reservationList.Add(reservation);
+                            }
+                        }
+                    }
+                }
+            } catch(System.Exception)
+            {
+                MessageBox.Show("실패");
+            }
+
+            return reservationList;
         }
     }
 }

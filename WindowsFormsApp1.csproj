@@ -128,6 +128,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl_예약정보.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl_예약정보.Designer.cs">
+      <DependentUpon>UserControl_예약정보.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl_회원정보.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -182,6 +188,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControl_예약정보.resx">
+      <DependentUpon>UserControl_예약정보.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl_회원정보.resx">
       <DependentUpon>UserControl_회원정보.cs</DependentUpon>
     </EmbeddedResource>
