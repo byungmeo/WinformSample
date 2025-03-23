@@ -421,5 +421,81 @@ namespace WindowsFormsApp1
                 MessageBox.Show("실패");
             }
         }
+
+        internal static List<Reservation> GetReservationAll()
+        {
+            List<Reservation> 예약현황 = new List<Reservation>();
+
+            string sql = "SELECT * FROM [reservation]";
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            while(reader.Read())
+                            {
+                                Reservation reservation = new Reservation();
+                                reservation.rno = reader.GetInt32(0);
+                                reservation.uno = reader.GetInt32(1);
+                                reservation.sno = reader.GetInt32(2);
+                                reservation.carno = reader.GetInt32(3);
+                                reservation.seat = reader.GetString(4);
+                                예약현황.Add(reservation);
+                            }
+                        }
+                    }
+                }
+            } catch(System.Exception)
+            {
+                MessageBox.Show("실패");
+            }
+
+            return 예약현황;
+        }
+
+        public static List<Schedule> GetScheduleAll()
+        {
+            List<Schedule> scheduleList = new List<Schedule>();
+
+            string sql = $"SELECT * FROM [schedule]";
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        using(SqlDataReader reader = sqlCommand.ExecuteReader())
+                        {
+                            while(reader.Read())
+                            {
+                                Schedule schedule = new Schedule();
+
+                                schedule.sno = reader.GetInt32(0);
+                                schedule.date = reader.GetDateTime(1);
+                                schedule.starting = reader.GetInt32(2);
+                                schedule.destination = reader.GetInt32(3);
+                                schedule.time = reader.GetTimeSpan(4);
+
+                                scheduleList.Add(schedule);
+                            }
+                        }
+                    }
+                }
+            } catch(System.Exception)
+            {
+                MessageBox.Show("실패");
+            }
+
+            return scheduleList;
+        }
     }
 }
