@@ -18,13 +18,20 @@ namespace WindowsFormsApp1
         }
         private void pictureBox_회원정보_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
+            Form12_회원정보 formAccountManage = new Form12_회원정보();
+            formAccountManage.ShowDialog(this);
+            this.Visible = true;
         }
 
         private void pictureBox_분석_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
+            Form13_분석 formAnalyze = new Form13_분석();
+            formAnalyze.ShowDialog(this);
+            this.Visible = true;
         }
+
         private void pictureBox_로그아웃_Click(object sender, EventArgs e)
         {
             Close();

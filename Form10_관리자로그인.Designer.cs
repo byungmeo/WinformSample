@@ -103,6 +103,7 @@
             this.button_login.TabIndex = 27;
             this.button_login.Text = "로그인";
             this.button_login.UseVisualStyleBackColor = false;
+            this.button_login.Click += new System.EventHandler(this.button_login_Click);
             // 
             // textBox_pw
             // 
