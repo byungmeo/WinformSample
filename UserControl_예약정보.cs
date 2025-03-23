@@ -19,8 +19,8 @@ namespace WindowsFormsApp1
             label_day.Text = day + "일";
             label_startLocationName.Text = startLocationName;
             label_destinationLocationName.Text = destinationLocationName;
-            label_startTime.Text = $"{startTime.Hours}:{startTime.Minutes}";
-            label_arriveTime.Text = $"{arriveTime.Hours}:{arriveTime.Minutes}";
+            label_startTime.Text = $"{startTime.Hours:00}:{startTime.Minutes:00}";
+            label_arriveTime.Text = $"{arriveTime.Hours:00}:{arriveTime.Minutes:00}";
             label_carno.Text = carno.ToString();
             label_seat.Text = seat;
 

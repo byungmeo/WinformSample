@@ -163,6 +163,7 @@ namespace WindowsFormsApp1
             // TimeSpan에서 24시간을 넘어가면 1.01:00과 같이 표시되어버린다.
             // 그래서 임시 DateTime을 만들어서 시간을 더해주는 것이다.
             DateTime 도착시간 = new DateTime(1, 1, 1, startTime.Hours, startTime.Minutes, 0);
+            도착시간 = 도착시간.Add(addTime);
 
             return 도착시간.TimeOfDay;
         }

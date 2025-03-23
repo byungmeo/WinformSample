@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace WindowsFormsApp1
 {
@@ -206,7 +205,6 @@ namespace WindowsFormsApp1
 
             return locationList;
         }
-
         public static List<Schedule> GetScheduleByDateAndLocation(DateTime date, int lnoStart, int lnoDestination)
         {
             List<Schedule> scheduleList = new List<Schedule>();
@@ -252,7 +250,6 @@ namespace WindowsFormsApp1
 
             return scheduleList;
         }
-
         public static Schedule GetScheduleByDateAndTime(DateTime date, int starting, int destination, TimeSpan startTime)
         {
             List<Schedule> scheduleList = new List<Schedule>();
@@ -297,7 +294,6 @@ namespace WindowsFormsApp1
             // 어차피 무조건 1개만 있는 것이 보장되어 0번째 스케줄 반환
             return scheduleList[0];
         }
-
         public static List<Reservation> GetReservationByScheduleAndCarNumber(int sno, int carno)
         {
             List<Reservation> reservationList = new List<Reservation>();
@@ -338,7 +334,6 @@ namespace WindowsFormsApp1
 
             return reservationList;
         }
-
         public static List<User> GetUserAll()
         {
             List<User> 유저리스트 = new List<User>();
@@ -377,8 +372,7 @@ namespace WindowsFormsApp1
 
             return 유저리스트;
         }
-
-        internal static void DeleteReservationByUno(int uno)
+        public static void DeleteReservationByUno(int uno)
         {
             string sql = $"DELETE FROM [reservation] WHERE uno={uno}";
 
@@ -400,8 +394,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("실패");
             }
         }
-
-        internal static void DeleteUserByUno(int uno)
+        public static void DeleteUserByUno(int uno)
         {
             string sql = $"DELETE FROM [user] WHERE uno={uno}";
 
@@ -422,8 +415,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("실패");
             }
         }
-
-        internal static List<Reservation> GetReservationAll()
+        public static List<Reservation> GetReservationAll()
         {
             List<Reservation> 예약현황 = new List<Reservation>();
 
@@ -459,7 +451,6 @@ namespace WindowsFormsApp1
 
             return 예약현황;
         }
-
         public static List<Schedule> GetScheduleAll()
         {
             List<Schedule> scheduleList = new List<Schedule>();
@@ -498,7 +489,6 @@ namespace WindowsFormsApp1
 
             return scheduleList;
         }
-
         public static List<Reservation> GetReservationByUno(int uno)
         {
             List<Reservation> reservationList = new List<Reservation>();
@@ -535,6 +525,31 @@ namespace WindowsFormsApp1
             }
 
             return reservationList;
+        }
+        public static void 예매(Reservation 최종예매정보)
+        {
+            int uno = 최종예매정보.uno;
+            int sno = 최종예매정보.sno;
+            int carno = 최종예매정보.carno;
+            string seat = 최종예매정보.seat;
+            string sql = $"INSERT INTO [reservation] (uno, sno, carno, seat) VALUES ({uno}, {sno}, {carno}, '{seat}')";
+            Console.WriteLine(sql);
+
+            try
+            {
+                using(SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using(SqlCommand sqlCommand = new SqlCommand(sql, connection))
+                    {
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+            } catch(System.Exception)
+            {
+                MessageBox.Show("실패");
+            }
         }
     }
 }

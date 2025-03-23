@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
         int 현재호차번호 = 1;
 
         // 좌석을 선택했을 때 건네줄 정보
-        public Reservation 선택좌석정보;
+        public Reservation 최종예매정보;
 
         // 예약폼에게 받는 정보
         int 로그인회원번호;
@@ -62,13 +62,8 @@ namespace WindowsFormsApp1
                         button.Margin = new Padding(3, 20, 3, 3);
                     }
 
-                    string title = "";
-                    title += c;
                     // 만약, 숫자가 10보다 작다면 앞에 0을 붙여서 2자리로 만들자
-                    if(i < 10)
-                        title += "0" + i;
-                    else
-                        title += i;
+                    string title = $"{c}{i:00}";
                     button.Text = title;
 
                     // 만약, 이미 예약이 되어있는 좌석이라면 비활성화
@@ -85,12 +80,12 @@ namespace WindowsFormsApp1
                             // ↓ 버튼을 클릭하면 실행이 되는 코드 ↓
 
                             // 새로운 예약 정보를 만들고 싶다.
-                            선택좌석정보 = new Reservation();
+                            최종예매정보 = new Reservation();
                             // rno는 적을 필요 없다 (데이터베이스에 넣으면 자동 생성해줌)
-                            선택좌석정보.uno = 로그인회원번호;
-                            선택좌석정보.sno = 선택스케쥴번호;
-                            선택좌석정보.carno = 현재호차번호;
-                            선택좌석정보.seat = button.Text;
+                            최종예매정보.uno = 로그인회원번호;
+                            최종예매정보.sno = 선택스케쥴번호;
+                            최종예매정보.carno = 현재호차번호;
+                            최종예매정보.seat = button.Text;
 
                             // 예약폼에 선택을 완료했다는 신호을 보내고 폼을 종료하고 싶다.
                             DialogResult = DialogResult.OK;

@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
         public int 최종금액;
         public Schedule 선택스케줄 = null;
         public TimeSpan 도착시간;
-        public Reservation 선택좌석정보 = null;
+        public Reservation 최종예매정보 = null;
         public Form04_예매(User user, int 나이)
         {
             InitializeComponent();
@@ -45,7 +45,7 @@ namespace WindowsFormsApp1
         void 출발지선택후초기화()
         {
             선택스케줄 = null;
-            선택좌석정보 = null;
+            최종예매정보 = null;
             도착지명 = "";
 
             button_도착지.Text = "도착지 선택>";
@@ -83,7 +83,7 @@ namespace WindowsFormsApp1
         void 도착지선택후초기화()
         {
             선택스케줄 = null;
-            선택좌석정보 = null;
+            최종예매정보 = null;
             textBox_날짜.Text = "";
             textBox_출발시간.Text = "";
             textBox_도착시간.Text = "";
@@ -141,7 +141,7 @@ namespace WindowsFormsApp1
             this.Visible = true;
 
             // 스케줄이 바뀌면 선택좌석정보를 초기화
-            선택좌석정보 = null;
+            최종예매정보 = null;
             textBox_호차.Text = "";
             textBox_좌석.Text = "";
             textBox_할인.Text = "";
@@ -167,9 +167,9 @@ namespace WindowsFormsApp1
             DialogResult dr = formSeat.ShowDialog(this);
             if(dr == DialogResult.OK)
             {
-                선택좌석정보 = formSeat.선택좌석정보;
-                textBox_호차.Text = 선택좌석정보.carno.ToString();
-                textBox_좌석.Text = 선택좌석정보.seat;
+                최종예매정보 = formSeat.최종예매정보;
+                textBox_호차.Text = 최종예매정보.carno.ToString();
+                textBox_좌석.Text = 최종예매정보.seat;
             }
             this.Visible = true;
 
@@ -181,12 +181,13 @@ namespace WindowsFormsApp1
         private void button_예매_Click(object sender, EventArgs e)
         {
             // 선택좌석정보가 null이라는 것은 빈칸이 있다는 뜻
-            if(선택좌석정보 == null)
+            if(최종예매정보 == null)
             {
                 MessageBox.Show("선택하지 않은 항목이 있습니다.", "경고", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
+            DatabaseHelper.예매(최종예매정보);
             MessageBox.Show("예매가 완료되었습니다.", "정보", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DialogResult = DialogResult.OK;
             Close();

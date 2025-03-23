@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
 
             label_top.Text = $"출발지: {출발지명} → 도착지: {도착지명}    금액:{금액:#,##0}원";
 
+            Console.WriteLine($"선택날짜:{선택날짜}, 출발지번호:{출발지번호}, 도착지번호:{도착지번호}");
             List<Schedule> scheduleList = DatabaseHelper.GetScheduleByDateAndLocation(선택날짜, 출발지번호, 도착지번호);
 
             // 출발 시간에 대한 오름차순 정렬
